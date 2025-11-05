@@ -32,6 +32,7 @@ void setup() {
 
   pinMode(INTERRUPT_PIN, INPUT);   // sets up the interrupts pin mode
   lcd.init();                      // initializes LCD display
+  lcd.backlight();
 
   // Attaches interrupt, defines pin, and triggers tooLoud interrupt on rising signal of INTERRUPT_PIN
   attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), tooLoud, RISING); 
@@ -86,12 +87,16 @@ void loop() {
   lcd.print("    ");
   // Then on second line prints if the interrupt has been activated or not
   lcd.setCursor(0, 1);
-  lcd.print("state: ");
-  lcd.print(isThresholdExceeded);
-}
+  lcd.print("Too loud?: ");
+  if (isThresholdExceeded) {
+    lcd.print("Yes");
+  } else {
+      lcd.print("no");
+}}
 
   // Interrupt activated if volume threshold reached
 void tooLoud() {
   // sets the variable to true changing what's displayed on the second line of the LCD display
   isThresholdExceeded = true;
 }
+
