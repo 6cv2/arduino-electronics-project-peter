@@ -82,7 +82,7 @@ void loop() {
 
   // Prints the average sensor value to the LCD display
   lcd.setCursor(0, 0);
-  lcd.print("Value: ");
+  lcd.print("Volume: ");
   lcd.print(averageSensorValue);
   lcd.print("    ");
   // Then on second line prints if the interrupt has been activated or not
@@ -99,4 +99,3 @@ void tooLoud() {
   // sets the variable to true changing what's displayed on the second line of the LCD display
   isThresholdExceeded = true;
 }
-
